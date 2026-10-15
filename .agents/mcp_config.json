@@ -1,0 +1,49 @@
+{
+  "mcpServers": {
+    "nextjs-docs": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": ["-y", "next-devtools-mcp@latest"]
+    },
+    "postgres-readonly": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "${DATABASE_READONLY_URL}"
+      ]
+    },
+    "playwright": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest",
+        "--headless",
+        "--isolated",
+        "--timeout-action",
+        "5000",
+        "--timeout-navigation",
+        "10000"
+      ]
+    },
+    "github-readonly": {
+      "command": "/opt/homebrew/bin/npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github",
+        "--read-only"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    },
+    "op-sandbox": {
+      "command": "/opt/homebrew/bin/python3",
+      "args": [
+        "/Volumes/ADATA SD620/Programacion 7.0/hackaton-medellin/scripts/mcp-op-sandbox.py"
+      ],
+      "env": {
+        "OP_SANDBOX_AUDIT_LOG": "/Volumes/ADATA SD620/Programacion 7.0/hackaton-medellin/docs/context/op-sandbox-audit.log"
+      }
+    }
+  }
+}

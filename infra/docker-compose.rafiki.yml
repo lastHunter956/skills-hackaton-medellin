@@ -1,0 +1,52 @@
+name: rafiki-local
+
+networks:
+  rafiki-net:
+    driver: bridge
+
+volumes:
+  rafiki_postgres_data:
+    driver: local
+  rafiki_redis_data:
+    driver: local
+
+services:
+  rafiki-postgres:
+    image: postgres:16.8-alpine
+    container_name: rafiki-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${RAFIKI_PG_USER:-postgres}
+      POSTGRES_PASSWORD: ${RAFIKI_PG_PASSWORD:-rafiki_local_password}
+      POSTGRES_MULTIPLE_DATABASES: "cloud_nine_auth,cloud_nine_backend,happy_life_auth,happy_life_backend"
+    ports:
+      - "127.0.0.1:${RAFIKI_PG_PORT:-5433}:5432"
+    volumes:
+      - rafiki_postgres_data:/var/lib/postgresql/data
+    networks:
+      - rafiki-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${RAFIKI_PG_USER:-postgres}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    security_opt:
+      - no-new-privileges:true
+
+  rafiki-redis:
+    image: redis:7.4.2-alpine
+    container_name: rafiki-redis
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${RAFIKI_REDIS_PORT:-6379}:6379"
+    volumes:
+      - rafiki_redis_data:/data
+    networks:
+      - rafiki-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    security_opt:
+      - no-new-privileges:true

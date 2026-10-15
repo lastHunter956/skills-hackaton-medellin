@@ -1,0 +1,47 @@
+# Environment and secrets
+.env*
+!.env.example
+*.pem
+*.key
+*.cert
+*.crt
+credentials*.json
+token*.json
+
+# Agent ephemeral state
+.agents/state/
+
+# Node / Web
+node_modules/
+.next/
+dist/
+build/
+.npm
+.yarn/
+*.log
+
+# Python
+.venv/
+venv/
+ENV/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS and Editor artifacts
+.DS_Store
+._*
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+scratch/
+tmp/
+*.tmp
