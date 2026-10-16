@@ -10,7 +10,7 @@ Esta skill define el procedimiento uniforme para diseñar, documentar y verifica
 ## Principios Rectores
 
 1. **Progressive Disclosure:** El archivo principal `SKILL.md` debe mantenerse por debajo de las 200 líneas. Los manuales exhaustivos, especificaciones de payloads o esquemas deben delegarse en la carpeta `references/`.
-2. **Invariantes Financieras:** Nunca dupliques invariantes de pagos dentro de una skill. Enlaza siempre a la fuente única: [.agents/rules/10-payments-domain.md](../../rules/10-payments-domain.md).
+2. **Invariantes Financieras:** Nunca inventes ni dupliques invariantes de pagos dentro de una skill. Incorpora las invariantes sincronizadas en `references/invariants.md` mediante `scripts/sync-shared.py`.
 3. **Scripts Seguros:** Cualquier comando auxiliar en `scripts/` debe aceptar el flag `--help`, retornar código de salida 0 y justificar su consumo de tokens.
 4. **Cero Carpetas Vacías:** Solo crea `scripts/`, `examples/` o `resources/` si contienen archivos necesarios.
 

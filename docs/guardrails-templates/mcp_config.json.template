@@ -1,0 +1,32 @@
+{
+  "mcpServers": {
+    "nextjs-docs": {
+      "command": "<NPX_PATH>",
+      "args": ["-y", "@modelcontextprotocol/server-everything"]
+    },
+    "postgres-readonly": {
+      "command": "<NPX_PATH>",
+      "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://user:pass@127.0.0.1:5432/db?sslmode=disable"]
+    },
+    "playwright": {
+      "command": "<NPX_PATH>",
+      "args": ["-y", "@modelcontextprotocol/server-playwright"]
+    },
+    "github-readonly": {
+      "command": "<NPX_PATH>",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "REPLACE_WITH_READONLY_TOKEN"
+      }
+    },
+    "op-sandbox": {
+      "command": "<PYTHON_PATH>",
+      "args": [
+        "<WORKSPACE_DIR>/.agents/skills/rafiki-local-playground/scripts/mcp-op-sandbox.py"
+      ],
+      "env": {
+        "OP_SANDBOX_AUDIT_LOG": "<WORKSPACE_DIR>/docs/context/op-sandbox-audit.log"
+      }
+    }
+  }
+}

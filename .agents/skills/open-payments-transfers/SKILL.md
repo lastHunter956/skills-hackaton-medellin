@@ -8,7 +8,7 @@ description: "Flujo procedimental para resolver Wallet Addresses, crear Incoming
 Este documento describe el procedimiento formal para realizar pagos y transferencias entre cuentas mediante Open Payments y el servidor de autorización GNAP de Rafiki.
 
 > [!IMPORTANT]
-> **Invariantes Financieras Obligatorias:** Todas las reglas de precisión numérica (cero floats, unidad mínima), máquina de estados formal, idempotencia y módulos server-only están regidas por [.agents/rules/10-payments-domain.md](../../rules/10-payments-domain.md). Queda prohibido eludir dichas reglas.
+> **Invariantes Financieras Obligatorias:** Todas las reglas de precisión numérica (cero floats, unidad mínima), máquina de estados formal, idempotencia y módulos server-only están regidas por [invariants.md](./references/invariants.md). Queda prohibido eludir dichas reglas.
 
 ---
 

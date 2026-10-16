@@ -1,0 +1,48 @@
+{
+  "payments-guard": {
+    "PreToolUse": [
+      {
+        "matcher": "run_command|write_to_file|replace_file_content|view_file|list_directory",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"<PYTHON_PATH>\" \"<WORKSPACE_DIR>/.agents/hooks/payments-guard.py\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  },
+  "track-verification": {
+    "PostToolUse": [
+      {
+        "matcher": "run_command|write_to_file|replace_file_content",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"<PYTHON_PATH>\" \"<WORKSPACE_DIR>/.agents/hooks/track-verification.py\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  },
+  "done-gate": {
+    "Stop": [
+      {
+        "type": "command",
+        "command": "\"<PYTHON_PATH>\" \"<WORKSPACE_DIR>/.agents/hooks/done-gate.py\"",
+        "timeout": 5
+      }
+    ]
+  },
+  "session-start": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "\"<PYTHON_PATH>\" \"<WORKSPACE_DIR>/.agents/hooks/session-start.py\"",
+        "timeout": 5
+      }
+    ]
+  }
+}
