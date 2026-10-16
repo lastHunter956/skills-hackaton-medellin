@@ -14,12 +14,19 @@ Este repositorio ofrece compatibilidad dual como plugin para **Claude Code** y c
 
 El repositorio incluye el manifiesto `.claude-plugin/plugin.json` y el archivo de herramientas `.mcp.json`.
 
-**Instalación:**
-```bash
-# Instalación remota desde repositorio
-claude plugin install <owner>/<repo>
+**Instalación para el Equipo (Claude Code):**
+Dentro de una sesión interactiva de Claude Code, registra el marketplace e instala el plugin:
+```
+/plugin marketplace add lastHunter956/skills-hackaton-medellin
+/plugin install skills-hackaton-medellin@skills-hackaton-medellin
+```
 
-# O inicialización en desarrollo local apuntando al directorio
+**Instalación desde Terminal (CLI):**
+```bash
+# Instalación directa desde GitHub
+claude plugin install lastHunter956/skills-hackaton-medellin
+
+# O carga en desarrollo local apuntando al directorio
 claude plugin install .
 ```
 

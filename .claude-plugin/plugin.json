@@ -1,19 +1,10 @@
 {
-  "name": "open-payments-skills",
+  "name": "skills-hackaton-medellin",
   "version": "1.0.0",
-  "description": "Agent skills and tools for Open Payments, Rafiki, and Interledger integrations",
+  "description": "Open Payments, Interledger, Rafiki y Next.js skills para Claude Code",
   "author": {
     "name": "MD-Genius-Developers"
   },
-  "license": "Apache-2.0",
-  "skills": [
-    "./skills/incoming-payments-checkout",
-    "./skills/interledger-protocol-fundamentals",
-    "./skills/nextjs-typescript-application-architect",
-    "./skills/open-payments-transfers",
-    "./skills/rafiki-local-playground",
-    "./skills/server-only-payments-client",
-    "./skills/skill-authoring-standard",
-    "./skills/webhook-signature-verification"
-  ]
+  "repository": "https://github.com/lastHunter956/skills-hackaton-medellin",
+  "license": "Apache-2.0"
 }
