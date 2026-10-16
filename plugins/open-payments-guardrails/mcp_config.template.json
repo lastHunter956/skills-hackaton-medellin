@@ -1,0 +1,46 @@
+{
+  "mcpServers": {
+    "op-sandbox": {
+      "command": "python3",
+      "args": [
+        "./skills/rafiki-local-playground/scripts/mcp-op-sandbox.py"
+      ]
+    },
+    "nextjs-docs": {
+      "command": "npx",
+      "args": ["-y", "next-devtools-mcp@latest"]
+    },
+    "postgres-readonly": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "${DATABASE_READONLY_URL}"
+      ]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest",
+        "--headless",
+        "--isolated",
+        "--timeout-action",
+        "5000",
+        "--timeout-navigation",
+        "10000"
+      ]
+    },
+    "github-readonly": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github",
+        "--read-only"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    }
+  }
+}

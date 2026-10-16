@@ -1,0 +1,10 @@
+{
+  "name": "open-payments-guardrails",
+  "version": "1.0.0",
+  "description": "Guardrails, reglas, MCP y hooks seguros para proyectos Open Payments con Antigravity CLI",
+  "author": {
+    "name": "MD-Genius-Developers"
+  },
+  "repository": "https://github.com/lastHunter956/skills-hackaton-medellin",
+  "license": "Apache-2.0"
+}

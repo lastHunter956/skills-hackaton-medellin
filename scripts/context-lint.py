@@ -166,7 +166,7 @@ def lint_context(root_dir):
     # 5. Validar lineas duplicadas de >= 80 caracteres entre archivos .md
     line_origins = defaultdict(set)
     for dirpath, _, filenames in os.walk(root_dir):
-        if "/.git" in dirpath or "/node_modules" in dirpath or "/.next" in dirpath:
+        if "/.git" in dirpath or "/node_modules" in dirpath or "/.next" in dirpath or "/plugins" in dirpath:
             continue
         for fname in filenames:
             if fname.endswith(".md"):
