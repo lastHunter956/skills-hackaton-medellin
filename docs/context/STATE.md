@@ -1,11 +1,9 @@
 # Estado del Proyecto - Guardrails Antigravity
 
-- **Fase Actual:** Guardrails auditados en sandbox y settings reforzados.
+- **Fase Actual:** Compatibilidad dual completada: Plugin Claude Code y Skills Antigravity.
 - **Entorno:** macOS ARM64 | Sandbox activo | Settings protegidos contra tampering.
 - **Decisiones Vigentes:**
-  - Permissions: Settings.json actualizado con Deny > Ask > Allow y rutas absolutas.
-  - Sandbox: enableTerminalSandbox: true y toolPermission: proceed-in-sandbox.
-  - Auditoría FASE 3: 7/8 vectores bloqueados (1 fallo identificado en pnpm add).
-  - Context Linter: scripts/context-lint.py validado ("OK: dentro de presupuesto").
-  - Invariantes: Server-only en Open Payments y bloqueo privileged validados.
-- **Siguiente Paso:** Scaffolding de aplicación o ajuste fino según aprobación.
+  - Skills activas (8/8) en `skills/` canónico con symlink relativo en `.agents/skills`.
+  - Capa Claude Code: `.claude-plugin/plugin.json` y `.mcp.json` validados con `--strict`.
+  - Verificación: `claude plugin validate`, `validate-skill.py` y `context-lint.py` verdes.
+- **Siguiente Paso:** Presentación final de cambios y espera de aprobación para commit.

@@ -323,6 +323,10 @@ TOOLS_DEFINITIONS = [
 
 def run_stdio_server():
     """Bucle principal de protocolo MCP JSON-RPC 2.0 sobre stdio."""
+    if len(sys.argv) > 1 and sys.argv[1] in ("-h", "--help"):
+        print("Servidor MCP 'op-sandbox' para pruebas en entorno local y testnet de Open Payments / Rafiki.")
+        sys.exit(0)
+
     while True:
         line = sys.stdin.readline()
         if not line:

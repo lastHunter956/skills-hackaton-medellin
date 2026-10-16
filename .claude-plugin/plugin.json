@@ -1,0 +1,19 @@
+{
+  "name": "open-payments-skills",
+  "version": "1.0.0",
+  "description": "Agent skills and tools for Open Payments, Rafiki, and Interledger integrations",
+  "author": {
+    "name": "MD-Genius-Developers"
+  },
+  "license": "Apache-2.0",
+  "skills": [
+    "./skills/incoming-payments-checkout",
+    "./skills/interledger-protocol-fundamentals",
+    "./skills/nextjs-typescript-application-architect",
+    "./skills/open-payments-transfers",
+    "./skills/rafiki-local-playground",
+    "./skills/server-only-payments-client",
+    "./skills/skill-authoring-standard",
+    "./skills/webhook-signature-verification"
+  ]
+}

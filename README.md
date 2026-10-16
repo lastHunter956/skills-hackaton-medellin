@@ -6,16 +6,47 @@ Conjunto modular de habilidades agénticas (Agent Skills) y herramientas de desa
 
 ---
 
-## 1. Instalación Rápida con `skills-cli`
+## 1. Instalación y Uso según Ecosistema
 
-Puedes instalar el conjunto completo de skills o seleccionar únicamente las habilidades necesarias para tu proyecto.
+Este repositorio ofrece compatibilidad dual como plugin para **Claude Code** y como paquete de habilidades para agentes vía **`npx skills add`** / **Antigravity CLI**.
 
-### Instalación Completa
+### A. Claude Code (Plugin Nativo)
+
+El repositorio incluye el manifiesto `.claude-plugin/plugin.json` y el archivo de herramientas `.mcp.json`.
+
+**Instalación:**
+```bash
+# Instalación remota desde repositorio
+claude plugin install <owner>/<repo>
+
+# O inicialización en desarrollo local apuntando al directorio
+claude plugin install .
+```
+
+**Validación del Plugin:**
+```bash
+# Validación estándar del manifiesto y catálogo de skills
+claude plugin validate .
+
+# Modo estricto para pipelines de CI/CD
+claude plugin validate --strict .
+```
+
+> [!NOTE]
+> Para detalles sobre componentes portables y exclusión de hooks propietarios de Antigravity, consulta [docs/claude-plugin-notes.md](./docs/claude-plugin-notes.md).
+
+---
+
+### B. Antigravity CLI / Gestor `skills-cli`
+
+Puedes instalar el paquete completo o importar únicamente las habilidades que requiere tu aplicación.
+
+**Instalación Completa:**
 ```bash
 npx skills add <owner>/<repo>
 ```
 
-### Instalación Modular (Skills Específicas)
+**Instalación Modular (Skills Específicas):**
 ```bash
 # Ejemplo: Solo transferencias y verificación de firmas
 npx skills add <owner>/<repo> --skill open-payments-transfers --skill webhook-signature-verification
@@ -24,25 +55,33 @@ npx skills add <owner>/<repo> --skill open-payments-transfers --skill webhook-si
 npx skills add <owner>/<repo> --skill nextjs-typescript-application-architect --skill incoming-payments-checkout
 ```
 
-### Nota para Usuarios de Windows
-En entornos Windows donde la creación de enlaces simbólicos requiera privilegios elevados o modo desarrollador, utiliza el flag `--copy` para copiar directamente los archivos al directorio del agente:
+**Nota para Usuarios de Windows:**
+En entornos donde los enlaces simbólicos requieran permisos elevados, añade `--copy`:
 ```bash
 npx skills add <owner>/<repo> --copy
 ```
 
-### Fijar Versión Específica (Version Pinning)
-Según las opciones de `npx skills add --help`, puedes anclar la instalación a una etiqueta o commit específico utilizando el sufijo `#tag`:
+**Fijar Versión Específica (Version Pinning):**
+Para anclar la instalación a un release específico, utiliza el sufijo `#tag`:
 ```bash
 npx skills add <owner>/<repo>#v1.0.0
 ```
-Además, el gestor genera y respeta automáticamente el archivo `skills-lock.json` para garantizar reproducibilidad en equipos y pipelines de CI/CD.
+
+**Validación de Skills y Presupuesto de Contexto:**
+```bash
+# Valida formato, metadatos y scripts de cada skill
+python3 scripts/validate-skill.py skills
+
+# Audita límites de contexto, triggers y duplicados
+python3 scripts/context-lint.py .
+```
 
 ---
 
 ## 2. Advertencia de Seguridad
 
 > [!CAUTION]
-> **Permisos de Ejecución:** Las habilidades instaladas pueden contener scripts auxiliares y configuraciones de servidores MCP (`mcp-op-sandbox.py`) que se ejecutan localmente con los permisos del agente de codificación. Revisa el código fuente antes de su activación en entornos de producción.
+> **Permisos de Ejecución:** Las habilidades instaladas pueden contener scripts auxiliares y servidores MCP (`skills/rafiki-local-playground/scripts/mcp-op-sandbox.py`) que se ejecutan localmente con los permisos del agente de codificación. Revisa el código fuente antes de su activación en entornos de producción.
 >
 > Los guardrails de seguridad y hooks de ciclo de vida del sistema no se instalan vía `npx skills add`. Consulta [docs/INSTALL-GUARDRAILS.md](./docs/INSTALL-GUARDRAILS.md) para configurarlos de forma controlada.
 
